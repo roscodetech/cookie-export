@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cookie Export</title>
+  <style>
+    body { font: 13px/1.4 system-ui, sans-serif; width: 280px; margin: 12px; color: #1a1a1a; }
+    h1 { font-size: 14px; margin: 0 0 4px; }
+    label { display: block; color: #555; margin: 6px 0 4px; }
+    select { width: 100%; padding: 6px; margin-bottom: 10px; }
+    button { display: block; width: 100%; padding: 8px; margin-bottom: 6px; border: 1px solid #ccc; border-radius: 6px; background: #fff; cursor: pointer; }
+    #export { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+    button:disabled { opacity: .5; cursor: default; }
+    #status { min-height: 1.4em; margin: 6px 0 0; }
+    .warn { color: #8a5a00; font-size: 12px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Cookie Export</h1>
+  <label for="scope">Export cookies for</label>
+  <select id="scope"></select>
+  <button id="export">Export cookies.txt</button>
+  <button id="revoke" hidden>Revoke access to this site</button>
+  <p id="status" role="status"></p>
+  <p class="warn">The file contains your login session for this site. Don't share it, commit it, or keep it in a synced folder.</p>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
