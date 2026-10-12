@@ -13,10 +13,10 @@ It is built to be easy to audit: under 200 lines of JavaScript, no dependencies,
 5. Choose where to save the file.
 
 When the download finishes or is cancelled, the extension:
-- removes its access to the site, so each export needs a fresh approval;
-- deletes the entry from Chrome's download history, because that entry would otherwise contain the file's contents.
+- removes its site access, so each export needs a fresh approval;
+- deletes the entry from Chrome's download history, because the file is passed to Chrome as a `data:` URL and the entry can retain it.
 
-If the popup closes when Chrome shows the permission prompt, click the icon and **Export** again. Access is already granted, so it goes straight to saving.
+If the popup closes when Chrome shows the permission prompt, click the icon and **Export** again. Access is usually already granted by then, so it should go straight to saving.
 
 ## Permissions
 
@@ -27,7 +27,7 @@ If the popup closes when Chrome shows the permission prompt, click the icon and 
 | `activeTab` | Read the address of the tab you're on. |
 | Optional host access | Requested for one domain at a time, only when you click Export, and removed after the download. The extension has no site access when installed. |
 
-The extension has no content scripts, makes no network requests and stores nothing.
+The extension has no content scripts, makes no network requests and stores nothing apart from the file you save.
 
 ## Using the file
 

@@ -50,7 +50,10 @@ async function exportCookies() {
     setStatus(`Download started (${cookies.length} cookies). Site access is removed when it finishes.`);
   } catch (err) {
     if (!isUserCancel(err)) throw err;
-    setStatus('Save cancelled.');
+    // A cancelled Save As may fire no downloads.onChanged event, so revoke here too.
+    await chrome.permissions.remove(scopePermission(domain));
+    revokeBtn.hidden = true;
+    setStatus('Save cancelled. Site access removed.');
   }
 }
 
